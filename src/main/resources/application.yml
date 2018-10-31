@@ -1,0 +1,55 @@
+server:
+  port: 8080
+
+spring:
+  profiles:
+    active: local
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
+
+application:
+  channels:
+  - app-id: 1001
+    app-name: 'Shell Main'
+    node-url: https://testnet-gethpub1.bora-lagoon.com
+    contract-address: '0xcbdb17c5d25a4bcda8372327d06ef60f72fe55f2'
+    datasource:
+      driver-class-name: com.mysql.jdbc.Driver
+      jdbc-url: jdbc:mysql://localhost:3306/yourdb1?autoReconnect=true&useSSL=false
+      username: yourname
+      password: secret
+      initialization-mode: never
+      pool-name: point
+      maximum-pool-size: 3
+
+  - app-id: 100003
+    app-name: 'Tower Blocks'
+    node-url: https://testnet-gethpub2.bora-lagoon.com
+    contract-address: '0x265b579e4ee8b2a32ba1796692125ef3bb4613e2'
+    datasource:
+      driver-class-name: com.mysql.jdbc.Driver
+      jdbc-url: jdbc:mysql://localhost:3306/yourdb2?autoReconnect=true&useSSL=false
+      username: yourname
+      password: secret
+      initialization-mode: never
+      pool-name: point
+      maximum-pool-size: 3
+
+#  - app-id: 100004
+#    app-name: 'PacMan'
+#    node-url: https://testnet-gethpub3.bora-lagoon.com 
+#    contract-address: '0xe10478e1706807c64c7371ddb10c2b332ffce78a'
+#    datasource:
+#      driver-class-name: com.mysql.jdbc.Driver
+#      jdbc-url: jdbc:mysql://localhost:3306/yourdb3?autoReconnect=true&useSSL=false
+#      username: yourname
+#      password: secret
+#      initialization-mode: never
+#      pool-name: point
+#      maximum-pool-size: 3
+
+  token-node-url: https://testnet-gethpub.bora-lagoon.com
+  token-address: '0xdb7abeaa55e32d66cd0cda8c651ecb4c9bf93c71'
+
+logging.level:
+  com.boraecosystem: INFO

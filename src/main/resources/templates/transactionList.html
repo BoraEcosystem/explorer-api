@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<div th:replace="common/header :: header" th:remove="tag"></div>
+
+<body id="page-top">
+
+<div th:replace="common/topmenu :: topmenu" th:remove="tag"></div>
+
+<div id="wrapper">
+
+  <div th:replace="common/sidebar :: sidebar" th:remove="tag"></div>
+
+  <div id="content-wrapper">
+
+    <div class="container-fluid">
+
+      <!-- Breadcrumbs-->
+      <!--<ol class="breadcrumb">-->
+        <!--<li class="breadcrumb-item">-->
+          <!--<a href="#">Dashboard</a>-->
+        <!--</li>-->
+        <!--<li class="breadcrumb-item active">Tables</li>-->
+      <!--</ol>-->
+
+      <!-- DataTables Example -->
+      <div class="card mb-3">
+        <div class="card-header">
+          <i class="fas fa-table"></i>
+          Token Transactions
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="table-layout: fixed">
+              <thead>
+              <tr>
+                <th class="text-center" style="width: 20%">Transaction Hash</th>
+                <th class="text-center" style="width: 10%">Block</th>
+                <th class="text-center" style="width: 20%">From</th>
+                <th class="text-center" style="width: 20%">To</th>
+                <th class="text-center" style="width: 20%">Status</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr th:each="receipt : ${transactions}">
+                <td class="text-truncate"><a th:href="@{'/transactions/' + ${receipt.transactionHash}}" th:text="${receipt.transactionHash}">0xabcdef</a></td>
+                <td class="text-truncate text-center" th:text="${receipt.blockNo}">10101</td>
+                <td class="text-truncate"><a th:href="@{'/transactions/addresses/' + ${receipt.fromAddress}}" th:text="${receipt.fromAddress}">0x12345</a></td>
+                <td class="text-truncate"><a th:href="@{'/transactions/addresses/' + ${receipt.toAddress}}" th:text="${receipt.toAddress}">0x12345</a></td>
+                <td class="text-truncate text-center" th:text="${receipt.statusCode}">success</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="row">
+            <div class="form-group col-md-1">
+              <select class="form-control pagination" id="pageSizeSelect">
+                <option th:each="pageSize : ${pageSizes}" th:text="${pageSize}" th:value="${pageSize}"
+                        th:selected="${pageSize} == ${selectedPageSize}"></option>
+              </select>
+            </div>
+            <div th:if="${transactions.totalPages != 1}" class="form-group col-md-11">
+              <ul class="pagination">
+                <li class="page-item" th:classappend="${!pager.hasPrevious} ? disabled">
+                  <a class="page-link" th:href="@{/transactions(pageSize=${selectedPageSize}, page=${pager.previousPage})}">Previous</a>
+                </li>
+                <li class="page-item" th:classappend="${transactions.number == (page - 1)} ? 'active pointer-disabled'"
+                    th:each="page : ${#numbers.sequence(pager.startPage, pager.endPage)}">
+                  <a class="page-link" th:href="@{/transactions(pageSize=${selectedPageSize}, page=${page})}" th:text="${page}"></a>
+                </li>
+                <li class="page-item" th:classappend="${!pager.hasNext} ? disabled">
+                  <a class="page-link" th:href="@{/transactions(pageSize=${selectedPageSize}, page=${pager.nextPage})}">Next
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+        <div class="card-footer small text-muted" th:text="'Retrieved at ' + ${#dates.format(#dates.createNow(), 'dd MMM yyyy HH:mm')}">Updated yesterday at 11:59 PM</div>
+      </div>
+    </div>
+    <!-- /.container-fluid -->
+
+    <div th:replace="common/footer :: footer" th:remove="tag"></div>
+
+  </div>
+  <!-- /.content-wrapper -->
+
+</div>
+<!-- /#wrapper -->
+
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+  <i class="fas fa-angle-up"></i>
+</a>
+
+<div th:replace="common/script :: script" th:remove="tag"></div>
+
+<script>
+  $(document).ready(function () {
+    changePageAndSize();
+  });
+
+  function changePageAndSize() {
+    $('#pageSizeSelect').change(function () {
+      window.location.replace("/transactions?pageSize=" + this.value + "&page=1");
+    });
+  }
+</script>
+</body>
+
+</html>

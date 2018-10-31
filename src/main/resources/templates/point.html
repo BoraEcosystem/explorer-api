@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<div th:replace="common/header :: header" th:remove="tag"></div>
+
+<body id="page-top">
+
+<div th:replace="common/topmenu :: topmenu" th:remove="tag"></div>
+
+<div id="wrapper">
+
+  <div th:replace="common/sidebar :: sidebar" th:remove="tag"></div>
+
+  <div id="content-wrapper">
+
+    <div class="container-fluid">
+
+      <div class="card mb-3">
+        <div class="card-header">
+          <i class="fas fa-table"></i>
+          Point Transaction
+        </div>
+        <div class="card-body">
+          <form>
+            <div class="form-group row">
+              <label for="transactionHash" class="col-sm-2 col-form-label">Transaction Hash</label>
+              <div class="col-sm-10">
+                <input type="text" readonly class="form-control-plaintext" id="transactionHash" th:value="${tx.transactionHash}">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="blockNo" class="col-sm-2 col-form-label">Block Height</label>
+              <div class="col-sm-10">
+                <input type="text" readonly class="form-control-plaintext" id="blockNo" th:value="${tx.blockNo}">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="blockDate" class="col-sm-2 col-form-label">Date</label>
+              <div class="col-sm-10">
+                <input type="text" readonly class="form-control-plaintext" id="blockDate" th:value="${tx.blockDate}">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="status" class="col-sm-2 col-form-label">Status</label>
+              <div class="col-sm-10">
+                <input type="text" readonly class="form-control-plaintext" id="status" th:value="${tx.status}">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="fromAddress" class="col-sm-2 col-form-label">From</label>
+              <div class="col-sm-10">
+                <input type="text" readonly class="form-control-plaintext" id="fromAddress" th:value="${tx.fromAddress}">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="toAddress" class="col-sm-2 col-form-label">To</label>
+              <div class="col-sm-10">
+                <input type="text" readonly class="form-control-plaintext" id="toAddress" th:value="${tx.toAddress}">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="tokenAmount" class="col-sm-2 col-form-label">Value</label>
+              <div class="col-sm-10">
+                <input type="text" readonly class="form-control-plaintext" id="tokenAmount" th:value="${tx.amount}">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="method" class="col-sm-2 col-form-label">Method</label>
+              <div class="col-sm-10">
+                <input type="text" readonly class="form-control-plaintext" id="method" th:value="${tx.method}">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="nonce" class="col-sm-2 col-form-label">Nonce</label>
+              <div class="col-sm-10">
+                <input type="text" readonly class="form-control-plaintext" id="nonce" th:value="${tx.nonce}">
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <!--</div>-->
+      <!-- /.row (nested) -->
+    </div>
+    <!-- /.container-fluid -->
+
+    <div th:replace="common/footer :: footer" th:remove="tag"></div>
+
+  </div>
+  <!-- /.content-wrapper -->
+
+</div>
+<!-- /#wrapper -->
+
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+  <i class="fas fa-angle-up"></i>
+</a>
+
+<div th:replace="common/script :: script" th:remove="tag"></div>
+
+</body>
+
+</html>

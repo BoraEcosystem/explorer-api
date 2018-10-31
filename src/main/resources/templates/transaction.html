@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<div th:replace="common/header :: header" th:remove="tag"></div>
+
+<body id="page-top">
+
+<div th:replace="common/topmenu :: topmenu" th:remove="tag"></div>
+
+<div id="wrapper">
+
+  <div th:replace="common/sidebar :: sidebar" th:remove="tag"></div>
+
+  <div id="content-wrapper">
+
+    <div class="container-fluid">
+
+      <!-- Breadcrumbs-->
+      <!--<ol class="breadcrumb">-->
+        <!--<li class="breadcrumb-item">-->
+          <!--<a href="index.html">Dashboard</a>-->
+        <!--</li>-->
+        <!--<li class="breadcrumb-item active">Blank Page</li>-->
+      <!--</ol>-->
+
+      <!-- Page Content -->
+      <div class="card mb-3">
+        <div class="card-header">
+          <i class="fas fa-table"></i>
+          Point Transaction
+        </div>
+        <div class="card-body">
+          <form>
+            <div class="form-group row">
+              <label for="transactionHash" class="col-sm-2 col-form-label">Transaction Hash</label>
+              <div class="col-sm-10">
+                <input type="text" readonly class="form-control-plaintext" id="transactionHash" th:value="${transactionDetail.transactionHash}">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="status" class="col-sm-2 col-form-label">Status</label>
+              <div class="col-sm-10">
+                <input type="text" readonly class="form-control-plaintext" id="status" th:value="${transactionDetail.status}">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="fromAddress" class="col-sm-2 col-form-label">From</label>
+              <div class="col-sm-10">
+                <input type="text" readonly class="form-control-plaintext" id="fromAddress" th:value="${transactionDetail.fromAddress}">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="toAddress" class="col-sm-2 col-form-label">Contract</label>
+              <div class="col-sm-10">
+                <input type="text" readonly class="form-control-plaintext" id="toAddress" th:value="${transactionDetail.toAddress}">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="fromAddressForToken" class="col-sm-2 col-form-label">From(Token)</label>
+              <div class="col-sm-10">
+                <input type="text" readonly class="form-control-plaintext" id="fromAddressForToken"
+                       th:value="${transactionDetail.fromAddressForToken}">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="toAddressForToken" class="col-sm-2 col-form-label">To(Token)</label>
+              <div class="col-sm-10">
+                <input type="text" readonly class="form-control-plaintext" id="toAddressForToken" th:value="${transactionDetail.toAddressForToken}">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="tokenAmount" class="col-sm-2 col-form-label">Value</label>
+              <div class="col-sm-10">
+                <input type="text" readonly class="form-control-plaintext" id="tokenAmount" th:value="${transactionDetail.tokenAmount}">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="tokenAmountInEther" class="col-sm-2 col-form-label">Value(in Ether Unit)</label>
+              <div class="col-sm-10">
+                <input type="text" readonly class="form-control-plaintext" id="tokenAmountInEther" th:value="${transactionDetail.tokenAmountInEther}">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="gasPrice" class="col-sm-2 col-form-label">Gas Price</label>
+              <div class="col-sm-10">
+                <input type="text" readonly class="form-control-plaintext" id="gasPrice" th:value="${transactionDetail.gasPrice}">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="functionName" class="col-sm-2 col-form-label">Method</label>
+              <div class="col-sm-10">
+                <input type="text" readonly class="form-control-plaintext" id="functionName" th:value="${transactionDetail.functionName}">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="gas" class="col-sm-2 col-form-label">Gas</label>
+              <div class="col-sm-10">
+                <input type="text" readonly class="form-control-plaintext" id="gas" th:value="${transactionDetail.gas}">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="gasUsed" class="col-sm-2 col-form-label">Gas Used</label>
+              <div class="col-sm-10">
+                <input type="text" readonly class="form-control-plaintext" id="gasUsed" th:value="${transactionDetail.gasUsed}">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="nonce" class="col-sm-2 col-form-label">Nonce</label>
+              <div class="col-sm-10">
+                <input type="text" readonly class="form-control-plaintext" id="nonce" th:value="${transactionDetail.nonce}">
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- /.container-fluid -->
+
+    <div th:replace="common/footer :: footer" th:remove="tag"></div>
+
+  </div>
+  <!-- /.content-wrapper -->
+
+</div>
+<!-- /#wrapper -->
+
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+  <i class="fas fa-angle-up"></i>
+</a>
+
+<div th:replace="common/script :: script" th:remove="tag"></div>
+
+</body>
+
+</html>
